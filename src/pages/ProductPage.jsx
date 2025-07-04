@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ProductDetailPage from "./ProductDetailPage";
+import { API_URL } from "../components/utils";
 
 function ProductPage() {
   const [products, setProducts] = useState([]);
@@ -8,7 +8,7 @@ function ProductPage() {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/products");
+        const res = await fetch(`${API_URL}/api/products`);
         const data = await res.json();
         setProducts(data);
       } catch (error) {
@@ -17,6 +17,7 @@ function ProductPage() {
     };
     getProducts();
   }, []);
+
   return (
     <div>
       <h3>Products Page</h3>
@@ -25,10 +26,13 @@ function ProductPage() {
           <li key={product._id}>
             <Link to={product._id}>
               <div>
-                <img
-                  src={`http://localhost:5000${product.image}`}
-                  alt={product.name}
-                />
+                {product.image && (
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    style={{ width: "150px", height: "auto" }}
+                  />
+                )}
               </div>
               <div>
                 <p>{product.name}</p>
