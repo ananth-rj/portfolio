@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../redux/cartSlice";
 import { API_URL } from "../components/utils";
+import { toast } from "react-toastify";
 
 function ProductDetailPage() {
   const { id } = useParams();
@@ -38,7 +39,8 @@ function ProductDetailPage() {
     }
 
     dispatch(addItemToCart({ productId: product._id, qty }));
-    navigate("/cart");
+    toast.success("Item added to cart!");
+    // No redirect
   };
 
   if (!product) return <div>Loading...</div>;

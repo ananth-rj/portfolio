@@ -10,6 +10,7 @@ function Logout() {
 
   const handleLogout = () => {
     dispatch(logout());
+    navigate("/login");
   };
 
   useEffect(() => {
