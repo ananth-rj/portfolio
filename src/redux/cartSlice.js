@@ -67,6 +67,19 @@ export const removeItemFromCart = createAsyncThunk(
     }
   }
 );
+export const clearCartFromBackend = createAsyncThunk(
+  "cart/clearAll",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user?.token;
+      return await cartService.clearCart(token);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || error.message || "Failed to clear cart"
+      );
+    }
+  }
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -103,6 +116,10 @@ const cartSlice = createSlice({
       .addCase(removeItemFromCart.fulfilled, (state, action) => {
         state.isSuccess = true;
         state.cartItems = action.payload.cartItems || [];
+      })
+      .addCase(clearCartFromBackend.fulfilled, (state) => {
+        state.cartItems = [];
+        state.isSuccess = true;
       });
   },
 });

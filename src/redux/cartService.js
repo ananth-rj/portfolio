@@ -45,11 +45,20 @@ const removeFromCart = async (itemId, token) => {
   return res.data;
 };
 
+const clearCart = async (token) => {
+  const res = await axios.delete(`${API_URL}/api/cart`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return res.data;
+};
 const cartService = {
   getCart,
   addToCart,
   updateCartItem,
   removeFromCart,
+  clearCart,
 };
 
 export default cartService;
