@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { API_URL } from "../components/utils";
 
 function ProductPage() {
   const [products, setProducts] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -17,6 +17,9 @@ function ProductPage() {
     };
     getProducts();
   }, []);
+  const handleViewDetails = (id) => {
+    navigate(`/products/${id}`);
+  };
 
   return (
     <div>
@@ -24,20 +27,22 @@ function ProductPage() {
       <ul>
         {products.map((product) => (
           <li key={product._id}>
-            <Link to={product._id}>
-              <div>
-                {product.image && (
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    style={{ width: "150px", height: "auto" }}
-                  />
-                )}
-              </div>
-              <div>
-                <p>{product.name}</p>
-              </div>
-            </Link>
+            <div>
+              <p>{product.name}</p>
+              {product.image && (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  style={{ width: "150px", height: "auto" }}
+                />
+              )}
+            </div>
+            <button
+              className="addtocart"
+              onClick={() => handleViewDetails(product._id)}
+            >
+              View Details
+            </button>
           </li>
         ))}
       </ul>

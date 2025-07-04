@@ -43,6 +43,18 @@ function ProductDetailPage() {
     // No redirect
   };
 
+  const handleIncrease = () => {
+    if (qty < product.countInStock) {
+      setQty((prev) => prev + 1);
+    }
+  };
+
+  const handleDecrease = () => {
+    if (qty > 1) {
+      setQty((prev) => prev - 1);
+    }
+  };
+
   if (!product) return <div>Loading...</div>;
 
   return (
@@ -66,32 +78,36 @@ function ProductDetailPage() {
       <p>Price: ₹{product.price}</p>
       <p>Available Stock: {product.countInStock}</p>
 
-      <div style={{ margin: "1rem 0" }}>
-        <label>
-          Qty:
-          <select value={qty} onChange={(e) => setQty(Number(e.target.value))}>
-            {Array.from({ length: product.countInStock }, (_, i) => i + 1).map(
-              (x) => (
-                <option key={x} value={x}>
-                  {x}
-                </option>
-              )
-            )}
-          </select>
-        </label>
+      <div style={{ margin: "1rem 0", display: "flex", alignItems: "center" }}>
+        <button
+          onClick={handleDecrease}
+          disabled={qty <= 1}
+          style={{
+            padding: "0.25rem 0.75rem",
+            marginRight: "0.5rem",
+            cursor: "pointer",
+          }}
+        >
+          −
+        </button>
+        <span style={{ minWidth: "30px", textAlign: "center" }}>{qty}</span>
+        <button
+          onClick={handleIncrease}
+          disabled={qty >= product.countInStock}
+          style={{
+            padding: "0.25rem 0.75rem",
+            marginLeft: "0.5rem",
+            cursor: "pointer",
+          }}
+        >
+          +
+        </button>
       </div>
 
       <button
         onClick={handleAddToCart}
         disabled={product.countInStock === 0}
-        style={{
-          padding: "0.5rem 1rem",
-          backgroundColor: "#4CAF50",
-          color: "#fff",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
+        className="addtocart"
       >
         Add to Cart
       </button>

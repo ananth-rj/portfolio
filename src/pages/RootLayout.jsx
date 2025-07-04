@@ -29,7 +29,7 @@ function RootLayout() {
       <div>
         <NavLink to="/">Home</NavLink>
         <NavLink to="products">Products</NavLink>
-        <NavLink to="about">About</NavLink>
+        {/* <NavLink to="about">About</NavLink> */}
 
         {!user && <NavLink to="signup">SignUp</NavLink>}
         {!user && <NavLink to="login">Login</NavLink>}
