@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 function ProductPage() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [sortOrder, setSortOrder] = useState("default"); // "asc" | "desc" | "default"
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -63,15 +64,33 @@ function ProductPage() {
       </div>
     );
   }
+  let sortedProducts = [...products];
+
+  if (sortOrder === "asc") {
+    sortedProducts.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "desc") {
+    sortedProducts.sort((a, b) => b.price - a.price);
+  }
 
   return (
     <div className="container mx-auto px-4 py-6">
       <h3 className="text-3xl font-semibold mb-6 text-center text-gray-800">
         Products Page
       </h3>
+      <div className="flex justify-end mb-4">
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+          className="border border-gray-300 rounded px-3 py-1 text-gray-700"
+        >
+          <option value="default">Sort by (Default)</option>
+          <option value="asc">Price: Low to High</option>
+          <option value="desc">Price: High to Low</option>
+        </select>
+      </div>
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
+        {sortedProducts.map((product) => (
           <li
             key={product._id}
             className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center"
