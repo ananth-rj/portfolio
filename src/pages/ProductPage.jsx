@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { API_URL } from "../components/utils";
 import Spinner from "../components/Spinner";
-import { addItemToCart } from "../redux/cartSlice"; // adjust path as needed
+import { addItemToCart } from "../redux/cartSlice";
+import { fetchProducts } from "../redux/productsSlice";
 
 function ProductPage() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
 
@@ -15,22 +13,13 @@ function ProductPage() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
+  const { products, isLoading, isError, message } = useSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
-    const getProducts = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`${API_URL}/api/products`);
-        const data = await res.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Failed to fetch products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getProducts();
-  }, []);
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const handleViewDetails = (id) => {
     navigate(`/products/${id}`);
@@ -42,7 +31,6 @@ function ProductPage() {
       setShowLoginModal(true);
       return;
     }
-    // If logged in, add product with qty 1 by default
     dispatch(addItemToCart({ productId, qty: 1 }));
   };
 
@@ -56,10 +44,19 @@ function ProductPage() {
     setSelectedProductId(null);
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="flex justify-center items-center h-64">
         <Spinner />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="text-center text-red-600 mt-10">
+        <p className="text-lg font-semibold">Error:</p>
+        <p>{message}</p>
       </div>
     );
   }
@@ -76,6 +73,9 @@ function ProductPage() {
             key={product._id}
             className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center"
           >
+            <p className="text-lg font-medium mb-3 text-center">
+              {product.name}
+            </p>
             {product.image && (
               <img
                 src={product.image}
@@ -84,7 +84,7 @@ function ProductPage() {
               />
             )}
             <p className="text-lg font-medium mb-3 text-center">
-              {product.name}
+              ₹{product.price}
             </p>
             <div className="flex space-x-2">
               <button
@@ -104,7 +104,7 @@ function ProductPage() {
         ))}
       </ul>
 
-      {/* Modal for login prompt */}
+      {/* Login modal */}
       {showLoginModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-lg text-center">
