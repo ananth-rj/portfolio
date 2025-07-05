@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 
 .active {
   background-color: rgb(234, 219, 3);
   color: rgb(30, 30, 30);
@@ -20,4 +24,4 @@ li {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
+} */

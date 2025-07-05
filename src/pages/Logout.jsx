@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/authSlice";
 
 function Logout() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
   const handleLogout = () => {

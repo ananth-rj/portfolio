@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import NotFoundPage from "./pages/NotFound";
 import CartPage from "./pages/CartPage";
 import EditProductPage from "./components/EditProductPage";
+import AuthPage from "./pages/AuthPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,7 @@ function App() {
         { path: "signup", element: <SignUp /> },
         { path: "login", element: <Login /> },
         { path: "cart", element: <CartPage /> },
+        { path: "auth", element: <AuthPage /> },
 
         { path: "*", element: <NotFoundPage /> },
       ],
@@ -34,7 +36,17 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-center" // show toast at bottom center
+        autoClose={3000} // auto close after 3 seconds
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }

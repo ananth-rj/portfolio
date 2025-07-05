@@ -16,6 +16,13 @@ function EditProductPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Modal state
+  const [modal, setModal] = useState({
+    show: false,
+    message: "",
+    isError: false,
+  });
+
   useEffect(() => {
     async function fetchProduct() {
       try {
@@ -95,79 +102,150 @@ function EditProductPage() {
         throw new Error(data.message || "Failed to update product");
       }
 
-      alert("Product updated successfully!");
-      navigate(`/products/${id}`);
+      setModal({
+        show: true,
+        message: "Product updated successfully!",
+        isError: false,
+      });
     } catch (err) {
-      alert(err.message);
+      setModal({ show: true, message: err.message, isError: true });
     }
   };
 
-  if (loading) return <div>Loading product details...</div>;
-  if (error) return <div style={{ color: "red" }}>Error: {error}</div>;
+  const handleCloseModal = () => {
+    setModal({ show: false, message: "", isError: false });
+    navigate(`/products/${id}`);
+  };
+
+  if (loading)
+    return (
+      <div className="text-center py-10 text-gray-600">
+        Loading product details...
+      </div>
+    );
+  if (error)
+    return (
+      <div className="text-center py-10 text-red-600 font-semibold">
+        Error: {error}
+      </div>
+    );
 
   return (
-    <div style={{ maxWidth: "600px", margin: "2rem auto" }}>
-      <h2>Edit Product</h2>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <label>
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Price:
-          <input
-            type="number"
-            step="0.01"
-            value={price}
-            onChange={(e) => setPrice(Number(e.target.value))}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Description:
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Count In Stock:
-          <input
-            type="number"
-            value={countInStock}
-            onChange={(e) => setCountInStock(Number(e.target.value))}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Image:
-          <input type="file" accept="image/*" onChange={handleImageChange} />
-        </label>
-        <br />
-        {preview && (
-          <div style={{ margin: "1rem 0" }}>
-            <img
-              src={preview}
-              alt="Preview"
-              style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
+    <>
+      <div className="max-w-lg mx-auto my-10 p-6 bg-white rounded-lg shadow-md">
+        <h2 className="text-2xl font-semibold mb-6 text-gray-800">
+          Edit Product
+        </h2>
+        <form
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+          className="space-y-6"
+        >
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Name:
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-        )}
-        <button type="submit" style={{ padding: "0.5rem 1rem" }}>
-          Update Product
-        </button>
-      </form>
-    </div>
+
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Price:
+            </label>
+            <input
+              type="number"
+              step="0.01"
+              value={price}
+              onChange={(e) => setPrice(Number(e.target.value))}
+              required
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Description:
+            </label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+              rows={4}
+              className="w-full border border-gray-300 rounded px-3 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Count In Stock:
+            </label>
+            <input
+              type="number"
+              value={countInStock}
+              onChange={(e) => setCountInStock(Number(e.target.value))}
+              required
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 font-medium text-gray-700">
+              Image:
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="block w-full text-gray-700"
+            />
+          </div>
+
+          {preview && (
+            <div className="mt-4">
+              <img
+                src={preview}
+                alt="Preview"
+                className="w-full max-h-64 object-contain rounded-md border border-gray-300"
+              />
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition"
+          >
+            Update Product
+          </button>
+        </form>
+      </div>
+
+      {/* Modal */}
+      {modal.show && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded shadow-lg max-w-sm w-full p-6 mx-4">
+            <p
+              className={`mb-4 text-center text-lg ${
+                modal.isError ? "text-red-600" : "text-green-600"
+              }`}
+            >
+              {modal.message}
+            </p>
+            <button
+              onClick={handleCloseModal}
+              className="block mx-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

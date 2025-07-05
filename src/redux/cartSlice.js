@@ -111,11 +111,20 @@ const cartSlice = createSlice({
       })
       .addCase(updateItemInCart.fulfilled, (state, action) => {
         state.isSuccess = true;
-        state.cartItems = action.payload.cartItems || [];
+        const updatedItem = action.meta.arg;
+        const itemIndex = state.cartItems.findIndex(
+          (item) => item._id === updatedItem.itemId
+        );
+        if (itemIndex !== -1) {
+          state.cartItems[itemIndex].qty = updatedItem.qty;
+        }
       })
       .addCase(removeItemFromCart.fulfilled, (state, action) => {
         state.isSuccess = true;
-        state.cartItems = action.payload.cartItems || [];
+        const removedId = action.meta.arg;
+        state.cartItems = state.cartItems.filter(
+          (item) => item._id !== removedId
+        );
       })
       .addCase(clearCartFromBackend.fulfilled, (state) => {
         state.cartItems = [];

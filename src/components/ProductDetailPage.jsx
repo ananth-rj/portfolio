@@ -37,68 +37,58 @@ function ProductDetailPage() {
       navigate("/login");
       return;
     }
-
     dispatch(addItemToCart({ productId: product._id, qty }));
     toast.success("Item added to cart!");
-    // No redirect
   };
 
   const handleIncrease = () => {
-    if (qty < product.countInStock) {
-      setQty((prev) => prev + 1);
-    }
+    if (qty < product.countInStock) setQty(qty + 1);
   };
 
   const handleDecrease = () => {
-    if (qty > 1) {
-      setQty((prev) => prev - 1);
-    }
+    if (qty > 1) setQty(qty - 1);
   };
 
-  if (!product) return <div>Loading...</div>;
+  if (!product) return <div className="text-center py-10">Loading...</div>;
 
   return (
-    <div style={{ maxWidth: "600px", margin: "2rem auto" }}>
-      <h3>{product.name}</h3>
+    <div className="max-w-lg mx-auto my-10 p-6 bg-white rounded-lg shadow-md">
+      <h3 className="text-2xl font-semibold mb-4 text-gray-800">
+        {product.name}
+      </h3>
 
       {product.image && (
-        <img
-          src={product.image}
-          alt={product.name}
-          style={{
-            width: "100%",
-            maxHeight: "400px",
-            objectFit: "cover",
-            borderRadius: "8px",
-          }}
-        />
+        <div className="w-full h-80 bg-gray-100 flex items-center justify-center rounded-md mb-6">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
       )}
 
-      <p>{product.description}</p>
-      <p>Price: ₹{product.price}</p>
-      <p>Available Stock: {product.countInStock}</p>
+      <p className="mb-4 text-gray-700">{product.description}</p>
 
-      <div style={{ margin: "1rem 0", display: "flex", alignItems: "center" }}>
+      <p className="font-semibold text-lg mb-1">Price: ₹{product.price}</p>
+      <p className="text-sm text-gray-600 mb-6">
+        Available Stock: {product.countInStock}
+      </p>
+
+      <div className="flex items-center mb-6">
         <button
           onClick={handleDecrease}
           disabled={qty <= 1}
-          style={{
-            padding: "0.25rem 0.75rem",
-            marginRight: "0.5rem",
-            cursor: "pointer",
-          }}
+          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
         >
           −
         </button>
-        <span style={{ minWidth: "30px", textAlign: "center" }}>{qty}</span>
+        <span className="mx-4 min-w-[30px] text-center text-lg font-medium">
+          {qty}
+        </span>
         <button
           onClick={handleIncrease}
           disabled={qty >= product.countInStock}
-          style={{
-            padding: "0.25rem 0.75rem",
-            marginLeft: "0.5rem",
-            cursor: "pointer",
-          }}
+          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
         >
           +
         </button>
@@ -107,31 +97,26 @@ function ProductDetailPage() {
       <button
         onClick={handleAddToCart}
         disabled={product.countInStock === 0}
-        className="addtocart"
+        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white py-2 rounded font-semibold transition"
       >
         Add to Cart
       </button>
 
-      {user && user.isAdmin && (
-        <div style={{ marginTop: "1rem" }}>
+      {user?.isAdmin && (
+        <div className="mt-6">
           <Link
             to={`/products/${product._id}/edit`}
-            style={{
-              display: "inline-block",
-              padding: "0.5rem 1rem",
-              backgroundColor: "#007bff",
-              color: "#fff",
-              borderRadius: "4px",
-              textDecoration: "none",
-            }}
+            className="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition"
           >
             Edit Product
           </Link>
         </div>
       )}
 
-      <div style={{ marginTop: "1rem" }}>
-        <Link to="/products">← Back to Products</Link>
+      <div className="mt-6">
+        <Link to="/products" className="text-blue-600 hover:underline">
+          ← Back
+        </Link>
       </div>
     </div>
   );
