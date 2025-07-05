@@ -2,6 +2,13 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HiMenu, HiX } from "react-icons/hi";
+import {
+  FaHome,
+  FaBoxOpen,
+  FaShoppingCart,
+  FaSignInAlt,
+  FaUserPlus,
+} from "react-icons/fa";
 
 import Logout from "./Logout";
 import Logo from "../components/Logo";
@@ -50,11 +57,11 @@ function RootLayout() {
                   to="/"
                   className={({ isActive }) =>
                     isActive
-                      ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1"
-                      : "hover:text-yellow-300 transition"
+                      ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
+                      : "hover:text-yellow-300 transition flex items-center gap-1"
                   }
                 >
-                  Home
+                  <FaHome /> Home
                 </NavLink>
               </li>
               <li>
@@ -62,11 +69,11 @@ function RootLayout() {
                   to="/products"
                   className={({ isActive }) =>
                     isActive
-                      ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1"
-                      : "hover:text-yellow-300 transition"
+                      ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
+                      : "hover:text-yellow-300 transition flex items-center gap-1"
                   }
                 >
-                  Products
+                  <FaBoxOpen /> Products
                 </NavLink>
               </li>
 
@@ -77,11 +84,12 @@ function RootLayout() {
                       to="/cart"
                       className={({ isActive }) =>
                         isActive
-                          ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1"
-                          : "hover:text-yellow-300 transition"
+                          ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
+                          : "hover:text-yellow-300 transition flex items-center gap-1"
                       }
                     >
-                      Cart{" "}
+                      <FaShoppingCart />
+                      Cart
                       <span className="bg-yellow-300 text-blue-700 rounded-full px-2 ml-1 text-sm font-bold">
                         {cartItems.length}
                       </span>
@@ -98,11 +106,11 @@ function RootLayout() {
                       to="/auth"
                       className={({ isActive }) =>
                         isActive
-                          ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1"
-                          : "hover:text-yellow-300 transition"
+                          ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
+                          : "hover:text-yellow-300 transition flex items-center gap-1"
                       }
                     >
-                      Login
+                      <FaSignInAlt /> Login
                     </NavLink>
                   </li>
                 </>
