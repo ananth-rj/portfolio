@@ -27,19 +27,36 @@ function RootLayout() {
         <h3>React Shop</h3>
       </div>
       <div>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="products">Products</NavLink>
-        {/* <NavLink to="about">About</NavLink> */}
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="products">Products</NavLink>
+          </li>
+          {/* <li><NavLink to="about">About</NavLink></li> */}
+          {!user && (
+            <>
+              <li>
+                <NavLink to="signup">SignUp</NavLink>
+              </li>
+              <li>
+                <NavLink to="login">Login</NavLink>
+              </li>
+            </>
+          )}
 
-        {!user && <NavLink to="signup">SignUp</NavLink>}
-        {!user && <NavLink to="login">Login</NavLink>}
-
-        {user && (
-          <>
-            <NavLink to="cart">Cart {cartItems.length}</NavLink>
-            <Logout />
-          </>
-        )}
+          {user && (
+            <>
+              <li>
+                <NavLink to="cart">Cart {cartItems.length}</NavLink>
+              </li>
+              <li>
+                <Logout />
+              </li>
+            </>
+          )}
+        </ul>
       </div>
       <Outlet />
     </div>

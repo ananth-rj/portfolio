@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { login } from "../redux/authSlice";
@@ -9,7 +9,7 @@ function Login() {
   const { email, password } = formData;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user, isLoading, isError, isSuccess } = useSelector(
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
   const onChange = (e) => {
@@ -21,9 +21,16 @@ function Login() {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(login(formData));
-    navigate("/");
   };
-
+  useEffect(() => {
+    if (isSuccess || user) {
+      navigate("/");
+      return;
+    }
+    if (isError) {
+      toast.error(message);
+    }
+  }, [isError, isSuccess, user, navigate, message]);
   return (
     <div>
       <h3>Login</h3>
@@ -37,7 +44,7 @@ function Login() {
           placeholder="Enter your email"
         />
         <input
-          type="password"
+          type="text"
           name="password"
           value={password}
           onChange={onChange}

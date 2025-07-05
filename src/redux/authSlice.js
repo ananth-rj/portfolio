@@ -35,11 +35,14 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   }
 });
 
+export const logout = createAsyncThunk("auth/logout", async () => {
+  await authService.logout();
+});
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logout: (state) => {
+    logouts: (state) => {
       authService.logout();
       state.user = null;
       state.isSuccess = false;
@@ -49,6 +52,7 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      //register
       .addCase(register.pending, (state) => {
         state.isLoading = true;
       })
@@ -79,8 +83,12 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload || "Something went wrong";
         state.user = null;
+      })
+      //Logout
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
       });
   },
 });
-export const { logout } = authSlice.actions;
+// export const { logout } = authSlice.actions;
 export default authSlice.reducer;
