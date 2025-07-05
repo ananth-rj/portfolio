@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { API_URL } from "../components/utils";
+import { API_URL } from "./utils";
 
 function EditProductPage() {
   const { id } = useParams();

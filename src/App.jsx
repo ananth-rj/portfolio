@@ -2,14 +2,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import AboutPage from "./pages/AboutPage";
-import ProductDetailPage from "./pages/ProductDetailPage";
+import ProductDetailPage from "./components/ProductDetailPage";
 import RootLayout from "./pages/RootLayout";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import { ToastContainer } from "react-toastify";
 import NotFoundPage from "./pages/NotFound";
 import CartPage from "./pages/CartPage";
-import EditProductPage from "./pages/EditProductPage";
+import EditProductPage from "./components/EditProductPage";
 
 function App() {
   const router = createBrowserRouter([

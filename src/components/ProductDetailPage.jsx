@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../redux/cartSlice";
-import { API_URL } from "../components/utils";
+import { API_URL } from "./utils";
 import { toast } from "react-toastify";
 
 function ProductDetailPage() {

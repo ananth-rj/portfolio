@@ -36,13 +36,26 @@ function SignUp() {
     <div>
       <h3>Sign Up</h3>
       <form onSubmit={onSubmit}>
-        <input type="text" name="name" value={name} onChange={onChange} />
-        <input type="email" name="email" value={email} onChange={onChange} />
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={onChange}
+          placeholder="enter your name"
+        />
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={onChange}
+          placeholder="enter your email id"
+        />
         <input
           type="password"
           name="password"
           value={password}
           onChange={onChange}
+          placeholder="enter your password"
         />
         <button>Sign Up</button>
       </form>

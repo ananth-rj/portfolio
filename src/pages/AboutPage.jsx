@@ -1,4 +1,4 @@
-import AddProduct from "./AddProduct";
+import AddProduct from "../components/AddProduct";
 
 function AboutPage() {
   return (

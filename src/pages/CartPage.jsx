@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCart, resetCart, clearCartFromBackend } from "../redux/cartSlice";
+import { fetchCart, clearCartFromBackend } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function CartPage() {
@@ -39,10 +39,12 @@ export default function CartPage() {
       ))}
 
       <div style={{ marginTop: "1rem" }}>
-        <button onClick={() => navigate(-1)}>← Back to Previous Page</button>
-        <button onClick={handleCompleteOrder} style={{ marginLeft: "10px" }}>
-          Complete Order
-        </button>
+        <button onClick={() => navigate(-1)}>← Back</button>
+        {cartItems.length > 0 && (
+          <button onClick={handleCompleteOrder} style={{ marginLeft: "10px" }}>
+            Complete Order
+          </button>
+        )}
       </div>
     </div>
   );

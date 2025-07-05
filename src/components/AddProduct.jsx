@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { API_URL } from "../components/utils";
+import { API_URL } from "./utils";
 
 const AddProduct = () => {
   const [name, setName] = useState("");
@@ -26,7 +26,6 @@ const AddProduct = () => {
         formData.append("image", image);
       }
 
-      // ✅ Replace with your backend URL
       const { data } = await axios.post(`${API_URL}/api/products`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
