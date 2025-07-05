@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
 import { addItemToCart } from "../redux/cartSlice";
 import { fetchProducts } from "../redux/productsSlice";
+import Modal from "../components/Modal";
 
 function ProductPage() {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -104,30 +105,26 @@ function ProductPage() {
         ))}
       </ul>
 
-      {/* Login modal */}
       {showLoginModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-lg text-center">
-            <h3 className="text-xl font-semibold mb-4">Login Required</h3>
-            <p className="mb-6">
-              To add products to your cart, you need to login first.
-            </p>
-            <div className="flex justify-center space-x-4">
-              <button
-                onClick={handleLoginCancel}
-                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleLoginConfirm}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-              >
-                Yes, Login
-              </button>
-            </div>
+        <Modal title="Login Required" onClose={handleLoginCancel}>
+          <p className="mb-6">
+            To add products to your cart, you need to login first.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <button
+              onClick={handleLoginCancel}
+              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleLoginConfirm}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              Yes, Login
+            </button>
           </div>
-        </div>
+        </Modal>
       )}
     </div>
   );

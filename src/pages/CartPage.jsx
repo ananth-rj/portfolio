@@ -8,9 +8,8 @@ import {
 } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
-
-// Import trash icon from react-icons
 import { FaTrash } from "react-icons/fa";
+import Modal from "../components/Modal";
 
 export default function CartPage() {
   const navigate = useNavigate();
@@ -111,7 +110,6 @@ export default function CartPage() {
                   <span className="text-gray-600 font-semibold">
                     ₹{item.product?.price}
                   </span>
-                  <div></div>
                   <button
                     onClick={() => handleRemoveClick(item)}
                     className="text-red-600 hover:text-red-800 transition"
@@ -146,61 +144,57 @@ export default function CartPage() {
         </>
       )}
 
-      {/* Modal for completing order */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-lg">
-            <h3 className="text-xl font-semibold mb-4">Confirm Order</h3>
-            <p className="mb-6">Are you sure you want to place your order?</p>
-            <div className="flex justify-end space-x-4">
-              <button
-                onClick={() => setShowModal(false)}
-                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={confirmOrder}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-              >
-                Yes, Place Order
-              </button>
-            </div>
+        <Modal title="Confirm Order" onClose={() => setShowModal(false)}>
+          <p className="mb-6">Are you sure you want to place your order?</p>
+          <div className="flex justify-end space-x-4">
+            <button
+              onClick={() => setShowModal(false)}
+              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={confirmOrder}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              Yes, Place Order
+            </button>
           </div>
-        </div>
+        </Modal>
       )}
 
-      {/* Modal for confirming remove */}
       {showRemoveModal && itemToRemove && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white rounded-lg p-6 max-w-sm w-full shadow-lg">
-            <h3 className="text-xl font-semibold mb-4">Remove Item</h3>
-            <p className="mb-6">
-              Are you sure you want to remove{" "}
-              <span className="font-semibold">
-                {itemToRemove.product?.name}
-              </span>{" "}
-              from your cart?
-            </p>
-            <div className="flex justify-end space-x-4">
-              <button
-                onClick={() => {
-                  setShowRemoveModal(false);
-                  setItemToRemove(null);
-                }}
-                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={confirmRemove}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
-              >
-                Yes, Remove
-              </button>
-            </div>
+        <Modal
+          title="Remove Item"
+          onClose={() => {
+            setShowRemoveModal(false);
+            setItemToRemove(null);
+          }}
+        >
+          <p className="mb-6">
+            Are you sure you want to remove{" "}
+            <span className="font-semibold">{itemToRemove.product?.name}</span>{" "}
+            from your cart?
+          </p>
+          <div className="flex justify-end space-x-4">
+            <button
+              onClick={() => {
+                setShowRemoveModal(false);
+                setItemToRemove(null);
+              }}
+              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={confirmRemove}
+              className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+            >
+              Yes, Remove
+            </button>
           </div>
-        </div>
+        </Modal>
       )}
     </div>
   );
