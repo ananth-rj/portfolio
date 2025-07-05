@@ -1,12 +1,9 @@
-import { FaReact } from "react-icons/fa";
-
+import cart from "../assets/cart.svg";
 function Logo() {
   return (
     <div className="flex items-center space-x-2">
-      <FaReact className="text-cyan-400 text-3xl animate-spin-slow" />
+      <img src={cart} alt="site-logo" className="w-8 h-8" />
       <h1 className="text-2xl font-bold">React Shop</h1>
-
-      {/* <span className="text-xl font-bold text-gray-800">React Shop</span> */}
     </div>
   );
 }
