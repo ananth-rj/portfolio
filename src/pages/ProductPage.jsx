@@ -5,6 +5,7 @@ import Spinner from "../components/Spinner";
 import { addItemToCart } from "../redux/cartSlice";
 import { fetchProducts } from "../redux/productsSlice";
 import Modal from "../components/Modal";
+import { toast } from "react-toastify";
 
 function ProductPage() {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -33,6 +34,7 @@ function ProductPage() {
       return;
     }
     dispatch(addItemToCart({ productId, qty: 1 }));
+    toast.success("product added");
   };
 
   const handleLoginConfirm = () => {
