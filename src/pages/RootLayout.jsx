@@ -135,11 +135,13 @@ function RootLayout() {
                 to="/"
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
-                  isActive
-                    ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1"
-                    : "hover:text-yellow-300 transition"
+                  (isActive
+                    ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
+                    : "hover:text-yellow-300 transition ") +
+                  "flex items-center gap-2"
                 }
               >
+                <FaHome />
                 Home
               </NavLink>
             </li>
@@ -148,11 +150,13 @@ function RootLayout() {
                 to="/products"
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
-                  isActive
-                    ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1"
-                    : "hover:text-yellow-300 transition"
+                  (isActive
+                    ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
+                    : "hover:text-yellow-300 transition ") +
+                  "flex items-center gap-2"
                 }
               >
+                <FaBoxOpen />
                 Products
               </NavLink>
             </li>
@@ -164,11 +168,13 @@ function RootLayout() {
                     to="/cart"
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
-                      isActive
-                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1"
-                        : "hover:text-yellow-300 transition"
+                      (isActive
+                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
+                        : "hover:text-yellow-300 transition ") +
+                      "flex items-center gap-2"
                     }
                   >
+                    <FaShoppingCart />
                     Cart{" "}
                     <span className="bg-yellow-300 text-blue-700 rounded-full px-2 ml-1 text-sm font-bold">
                       {cartItems.length}
@@ -186,11 +192,13 @@ function RootLayout() {
                     to="/signup"
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
-                      isActive
-                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1"
-                        : "hover:text-yellow-300 transition"
+                      (isActive
+                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
+                        : "hover:text-yellow-300 transition ") +
+                      "flex items-center gap-2"
                     }
                   >
+                    <FaUserPlus />
                     SignUp
                   </NavLink>
                 </li>
@@ -199,11 +207,13 @@ function RootLayout() {
                     to="/login"
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
-                      isActive
-                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1"
-                        : "hover:text-yellow-300 transition"
+                      (isActive
+                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
+                        : "hover:text-yellow-300 transition ") +
+                      "flex items-center gap-2"
                     }
                   >
+                    <FaSignInAlt />
                     Login
                   </NavLink>
                 </li>
