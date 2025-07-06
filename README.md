@@ -1,51 +1,12 @@
-# React E-commerce App
+# React + Vite
 
-This is a responsive React.js e-commerce web application featuring user authentication, product management, and a dynamic UI.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Key Features
+Currently, two official plugins are available:
 
-- User registration and login with authentication
-- Product listing and management
-- Add to cart functionality with state management using Redux Toolkit
-- Responsive design using Tailwind CSS
-- Basic backend built with Node.js and Express (for API endpoints and image upload)
-- Cloudinary integration for image storage
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Technologies Used
+## Expanding the ESLint configuration
 
-- React.js
-- Redux Toolkit
-- React Router 7.6
-- Tailwind CSS
-- Node.js & Express (basic backend)
-- MongoDB (database)
-- Cloudinary (image storage)
-
-## Live Demo
-
-⚠️ Please note: This app's backend is hosted on Render (free tier), which puts the server to sleep after ~15 minutes of inactivity. The first request may result in a delay or temporary 502 error while the server wakes up.
-
-[Live site here](https://reactandredux.netlify.app/)
-
-## Getting Started Locally
-
-1. Clone the repository:
-
-```
-https://github.com/ananth-rj/portfolio.git
-```
-
-2. Install dependencies:
-   cd portfolio
-
-```
-npm install
-```
-
-3. Run the app:
-
-```
-npm run dev
-```
-
-4. Done! The app will run at http://localhost:5173/
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
