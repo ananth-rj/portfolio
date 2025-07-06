@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { login } from "../redux/authSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -73,6 +73,15 @@ function Login() {
           {isLoading ? "Logging in..." : "Login"}
         </button>
       </form>
+      <p className="mt-6 text-center text-gray-600">
+        Don't have an account?{" "}
+        <Link
+          to="/signup"
+          className="text-blue-600 hover:underline font-semibold"
+        >
+          Create new account
+        </Link>
+      </p>
     </div>
   );
 }
