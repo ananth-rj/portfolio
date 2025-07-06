@@ -27,18 +27,18 @@ This is a responsive React.js e-commerce web application featuring user authenti
 
 ## Getting Started Locally
 
-1. Clone the repository:  
+## Clone the repository:  
 ```
 https://github.com/ananth-rj/portfolio.git
 ```
-2. Install dependencies:
+## Install dependencies:
 cd portfolio
 ```
 npm install
 ```
 
-3.Run the app:
+## Run the app:
 ```
-npm eun dev
+npm run dev
 ```
-4.The app will run at http://localhost:5173/
+## The app will run at http://localhost:5173/
