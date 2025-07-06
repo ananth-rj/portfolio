@@ -22,7 +22,8 @@ This is a responsive React.js e-commerce web application featuring user authenti
 - Cloudinary (image storage)
 
 ## Live Demo
-Backend hosted in render free plan so you might see some error but the code is working
+⚠️ Please note: This app's backend is hosted on Render (free tier), which puts the server to sleep after ~15 minutes of inactivity. The first request may result in a delay or temporary 502 error while the server wakes up.
+
 [Live site here](https://reactandredux.netlify.app/)
 
 ## Getting Started Locally
