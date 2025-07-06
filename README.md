@@ -22,23 +22,25 @@ This is a responsive React.js e-commerce web application featuring user authenti
 - Cloudinary (image storage)
 
 ## Live Demo
-
+Backend hosted in render free plan so you might see some error but the code is working
 [Live site here](https://reactandredux.netlify.app/)
 
 ## Getting Started Locally
 
-## Clone the repository:  
+1. Clone the repository:  
 ```
 https://github.com/ananth-rj/portfolio.git
 ```
-## Install dependencies:
+2. Install dependencies:
 cd portfolio
 ```
 npm install
 ```
 
-## Run the app:
+3. Run the app:
 ```
 npm run dev
 ```
-## The app will run at http://localhost:5173/
+4. done
+   
+  The app will run at http://localhost:5173/
