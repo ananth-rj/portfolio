@@ -23,7 +23,7 @@ This is a responsive React.js e-commerce web application featuring user authenti
 
 ## Live Demo
 
-[Live site here](YOUR_LIVE_URL_HERE)
+[Live site here](https://reactandredux.netlify.app/)
 
 ## Getting Started Locally
 
