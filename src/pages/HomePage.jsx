@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const { user, isLoading } = useSelector((state) => state.auth);
@@ -44,6 +45,15 @@ function HomePage() {
         Browse products, manage your cart, and enjoy a seamless shopping journey
         powered by cutting-edge technology!
       </p>
+
+      <div className="flex justify-center mt-4 animate-bounce-slow">
+        <Link
+          to="/products"
+          className="bg-orange-400 px-2 py-1 rounded text-center"
+        >
+          View Products
+        </Link>
+      </div>
     </div>
   );
 }
