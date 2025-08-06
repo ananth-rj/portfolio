@@ -73,80 +73,80 @@ function ProductPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-6">
-      <h3 className="text-3xl font-semibold mb-6 text-center text-gray-800">
-        Products Page
-      </h3>
-      <div className="flex justify-end mb-4">
-        <select
-          value={sortOrder}
-          onChange={(e) => setSortOrder(e.target.value)}
-          className="border border-gray-300 rounded px-3 py-1 text-gray-700"
-        >
-          <option value="default">Sort by (Default)</option>
-          <option value="asc">Price: Low to High</option>
-          <option value="desc">Price: High to Low</option>
-        </select>
-      </div>
-
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {sortedProducts.map((product) => (
-          <li
-            key={product._id}
-            className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center"
+    <div>
+      <div className="container mx-auto px-4 py-6">
+        <h3 className="text-3xl font-semibold mb-6 text-center text-gray-800">
+          Products Page
+        </h3>
+        <div className="flex justify-end mb-4">
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="border border-gray-300 rounded px-3 py-1 text-gray-700"
           >
-            <p className="text-lg font-medium mb-3 text-center">
-              {product.name}
+            <option value="default">Sort by (Default)</option>
+            <option value="asc">Price: Low to High</option>
+            <option value="desc">Price: High to Low</option>
+          </select>
+        </div>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {sortedProducts.map((product) => (
+            <li
+              key={product._id}
+              className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center max-w-72"
+            >
+              <p className="text-lg font-medium mb-3 text-center">
+                {product.name}
+              </p>
+              {product.image && (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="object-contain rounded-md mb-4"
+                />
+              )}
+              <p className="text-lg font-medium mb-3 text-left">
+                ₹{product.price}
+              </p>
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => handleViewDetails(product._id)}
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-500"
+                >
+                  View Details
+                </button>
+                <button
+                  onClick={() => handleAddToCartClick(product._id)}
+                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+        {showLoginModal && (
+          <Modal title="Login Required" onClose={handleLoginCancel}>
+            <p className="mb-6">
+              To add products to your cart, you need to login first.
             </p>
-            {product.image && (
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full max-h-48 object-contain rounded-md mb-4"
-              />
-            )}
-            <p className="text-lg font-medium mb-3 text-center">
-              ₹{product.price}
-            </p>
-            <div className="flex space-x-2">
+            <div className="flex justify-center space-x-4">
               <button
-                onClick={() => handleViewDetails(product._id)}
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-500"
+                onClick={handleLoginCancel}
+                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
               >
-                View Details
+                Cancel
               </button>
               <button
-                onClick={() => handleAddToCartClick(product._id)}
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                onClick={handleLoginConfirm}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
               >
-                Add to Cart
+                Yes, Login
               </button>
             </div>
-          </li>
-        ))}
-      </ul>
-
-      {showLoginModal && (
-        <Modal title="Login Required" onClose={handleLoginCancel}>
-          <p className="mb-6">
-            To add products to your cart, you need to login first.
-          </p>
-          <div className="flex justify-center space-x-4">
-            <button
-              onClick={handleLoginCancel}
-              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleLoginConfirm}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-            >
-              Yes, Login
-            </button>
-          </div>
-        </Modal>
-      )}
+          </Modal>
+        )}
+      </div>
     </div>
   );
 }
