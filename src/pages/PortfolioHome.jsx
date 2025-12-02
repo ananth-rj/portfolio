@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCode, FaLaptopCode, FaDatabase, FaTools } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCode, FaLaptopCode, FaDatabase, FaWrench } from "react-icons/fa";
 
 function PortfolioHome() {
   return (

@@ -1,4 +1,4 @@
-import { FaBriefcase, FaGraduationCap, FaAward, FaCode, FaPalette, FaDatabase, FaRoute, FaCheckCircle, FaServer } from "react-icons/fa";
+import { FaBriefcase, FaGraduationCap, FaAward, FaCode, FaPalette, FaDatabase, FaRoute, FaCheckCircle, FaServer, FaWrench } from "react-icons/fa";
 
 function PortfolioAbout() {
   return (
@@ -178,7 +178,7 @@ function PortfolioAbout() {
             {/* Tools */}
             <div>
               <h3 className="text-xl font-bold text-gray-800 mb-3 flex items-center gap-2">
-                <FaTools className="text-gray-600" />
+                <FaWrench className="text-gray-600" />
                 Version Control & IDEs
               </h3>
               <div className="flex flex-wrap gap-2">
