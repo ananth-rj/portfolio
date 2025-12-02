@@ -48,7 +48,7 @@ function HomePage() {
 
       <div className="flex justify-center mt-4 animate-bounce-slow">
         <Link
-          to="/products"
+          to="/ecommerce/products"
           className="bg-orange-400 px-2 py-1 rounded text-center"
         >
           View Products

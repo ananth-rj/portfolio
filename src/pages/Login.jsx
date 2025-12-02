@@ -27,7 +27,7 @@ function Login() {
 
   useEffect(() => {
     if (isSuccess || user) {
-      navigate("/");
+      navigate("/ecommerce");
       return;
     }
     if (isError) {
@@ -76,7 +76,7 @@ function Login() {
       <p className="mt-6 text-center text-gray-600">
         Don't have an account?{" "}
         <Link
-          to="/signup"
+          to="/ecommerce/signup"
           className="text-blue-600 hover:underline font-semibold"
         >
           Create new account

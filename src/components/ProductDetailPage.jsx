@@ -20,7 +20,7 @@ function ProductDetailPage() {
       try {
         const res = await fetch(`${API_URL}/api/products/${id}`);
         if (!res.ok) {
-          navigate("/products");
+          navigate("/ecommerce/products");
           return;
         }
         const data = await res.json();
@@ -34,7 +34,7 @@ function ProductDetailPage() {
 
   const handleAddToCart = () => {
     if (!user) {
-      navigate("/login");
+      navigate("/ecommerce/login");
       return;
     }
     dispatch(addItemToCart({ productId: product._id, qty }));
@@ -104,7 +104,7 @@ function ProductDetailPage() {
         {user?.isAdmin && (
           <div className="mt-6">
             <Link
-              to={`/products/${product._id}/edit`}
+              to={`/ecommerce/products/${product._id}/edit`}
               className="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition"
             >
               Edit Product
@@ -113,7 +113,7 @@ function ProductDetailPage() {
         )}
 
         <div className="mt-6">
-          <Link to="/products" className="text-blue-600 hover:underline">
+          <Link to="/ecommerce/products" className="text-blue-600 hover:underline">
             ← Back
           </Link>
         </div>

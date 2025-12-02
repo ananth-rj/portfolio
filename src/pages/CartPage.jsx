@@ -55,7 +55,7 @@ export default function CartPage() {
   const confirmOrder = async () => {
     await dispatch(clearCartFromBackend());
     setShowModal(false);
-    navigate("/");
+    navigate("/ecommerce");
   };
 
   if (isLoading) {

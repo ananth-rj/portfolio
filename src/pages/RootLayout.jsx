@@ -36,7 +36,7 @@ function RootLayout() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-blue-700 text-white shadow-md relative">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
-          <Link to="/" onClick={() => setMobileOpen(false)}>
+          <Link to="/ecommerce" onClick={() => setMobileOpen(false)}>
             <Logo />
           </Link>
 
@@ -54,7 +54,8 @@ function RootLayout() {
             <ul className="flex space-x-6 text-lg">
               <li>
                 <NavLink
-                  to="/"
+                  to="/ecommerce"
+                  end
                   className={({ isActive }) =>
                     isActive
                       ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
@@ -66,7 +67,7 @@ function RootLayout() {
               </li>
               <li>
                 <NavLink
-                  to="/products"
+                  to="/ecommerce/products"
                   className={({ isActive }) =>
                     isActive
                       ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
@@ -81,7 +82,7 @@ function RootLayout() {
                 <>
                   <li>
                     <NavLink
-                      to="/cart"
+                      to="/ecommerce/cart"
                       className={({ isActive }) =>
                         isActive
                           ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
@@ -102,16 +103,16 @@ function RootLayout() {
               ) : (
                 <>
                   <li>
-                    <NavLink
-                      to="/auth"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
-                          : "hover:text-yellow-300 transition flex items-center gap-1"
-                      }
-                    >
-                      <FaSignInAlt /> Login
-                    </NavLink>
+                  <NavLink
+                    to="/ecommerce/auth"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
+                        : "hover:text-yellow-300 transition flex items-center gap-1"
+                    }
+                  >
+                    <FaSignInAlt /> Login
+                  </NavLink>
                   </li>
                 </>
               )}
@@ -132,7 +133,8 @@ function RootLayout() {
           <ul className="flex flex-col space-y-4 text-lg p-6">
             <li>
               <NavLink
-                to="/"
+                to="/ecommerce"
+                end
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
                   (isActive
@@ -147,7 +149,7 @@ function RootLayout() {
             </li>
             <li>
               <NavLink
-                to="/products"
+                to="/ecommerce/products"
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
                   (isActive
@@ -165,7 +167,7 @@ function RootLayout() {
               <>
                 <li>
                   <NavLink
-                    to="/cart"
+                    to="/ecommerce/cart"
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
                       (isActive
@@ -189,7 +191,7 @@ function RootLayout() {
               <>
                 <li>
                   <NavLink
-                    to="/signup"
+                    to="/ecommerce/signup"
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
                       (isActive
@@ -204,7 +206,7 @@ function RootLayout() {
                 </li>
                 <li>
                   <NavLink
-                    to="/login"
+                    to="/ecommerce/login"
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
                       (isActive

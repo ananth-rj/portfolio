@@ -25,7 +25,7 @@ function ProductPage() {
   }, [dispatch]);
 
   const handleViewDetails = (id) => {
-    navigate(`/products/${id}`);
+    navigate(`/ecommerce/products/${id}`);
   };
 
   const handleAddToCartClick = (productId) => {
@@ -40,7 +40,7 @@ function ProductPage() {
 
   const handleLoginConfirm = () => {
     setShowLoginModal(false);
-    navigate("/login");
+    navigate("/ecommerce/login");
   };
 
   const handleLoginCancel = () => {
@@ -61,9 +61,24 @@ function ProductPage() {
       <div className="text-center text-red-600 mt-10">
         <p className="text-lg font-semibold">Error:</p>
         <p>{message}</p>
+        <p className="mt-4 text-sm text-gray-600">
+          Please check if the API is running and VITE_API_URL is set correctly.
+        </p>
       </div>
     );
   }
+
+  if (!isLoading && products.length === 0) {
+    return (
+      <div className="text-center mt-10">
+        <p className="text-lg font-semibold text-gray-700 mb-2">No products available</p>
+        <p className="text-gray-600">
+          Products will appear here once they are loaded from the API.
+        </p>
+      </div>
+    );
+  }
+
   let sortedProducts = [...products];
 
   if (sortOrder === "asc") {
@@ -93,31 +108,41 @@ function ProductPage() {
           {sortedProducts.map((product) => (
             <li
               key={product._id}
-              className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center max-w-72"
+              className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-4 flex flex-col h-full"
             >
-              <p className="text-lg font-medium mb-3 text-center">
+              <p className="text-lg font-semibold mb-3 text-center text-gray-800 min-h-[3rem] flex items-center justify-center">
                 {product.name}
               </p>
-              {product.image && (
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="object-contain rounded-md mb-4"
-                />
-              )}
-              <p className="text-lg font-medium mb-3 text-left">
+              <div className="flex-1 flex items-center justify-center mb-4 min-h-[200px] bg-gray-50 rounded-md p-2 relative">
+                {product.image ? (
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="max-w-full max-h-[200px] object-contain rounded-md"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      const placeholder = e.target.parentElement.querySelector('.image-placeholder');
+                      if (placeholder) placeholder.classList.remove('hidden');
+                    }}
+                  />
+                ) : null}
+                <div className="hidden image-placeholder items-center justify-center text-gray-400 text-sm">
+                  No Image Available
+                </div>
+              </div>
+              <p className="text-xl font-bold mb-3 text-center text-blue-600">
                 ₹{product.price}
               </p>
-              <div className="flex space-x-2">
+              <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                 <button
                   onClick={() => handleViewDetails(product._id)}
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-500"
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition flex-1 text-sm"
                 >
                   View Details
                 </button>
                 <button
                   onClick={() => handleAddToCartClick(product._id)}
-                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition flex-1 text-sm"
                 >
                   Add to Cart
                 </button>

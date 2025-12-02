@@ -22,7 +22,7 @@ function SignUp() {
       toast.error(message);
     }
     if (isSuccess || user) {
-      navigate("/");
+      navigate("/ecommerce");
     }
   }, [isError, isSuccess, user, message, navigate]);
 
@@ -92,7 +92,7 @@ function SignUp() {
       <div className="mt-6 text-center text-gray-600">
         Already have an account?{" "}
         <Link
-          to="/login"
+          to="/ecommerce/login"
           className="text-blue-600 hover:underline font-semibold"
         >
           Login here

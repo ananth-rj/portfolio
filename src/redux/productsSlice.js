@@ -46,7 +46,10 @@ const productsSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.products = action.payload;
+        // Handle both array response and object with products property
+        state.products = Array.isArray(action.payload) 
+          ? action.payload 
+          : (action.payload?.products || []);
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;

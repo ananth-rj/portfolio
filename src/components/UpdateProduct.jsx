@@ -71,7 +71,7 @@ const UpdateProduct = () => {
       console.log("Product updated:", data);
       setMessage("Product updated successfully!");
       setTimeout(() => {
-        navigate("/products");
+        navigate("/ecommerce/products");
       }, 1500);
     } catch (error) {
       console.error(error);

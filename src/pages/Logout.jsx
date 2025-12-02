@@ -11,12 +11,12 @@ function Logout() {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/login");
+    navigate("/ecommerce/login");
   };
 
   useEffect(() => {
     if (!user) {
-      navigate("/");
+      navigate("/ecommerce");
     }
   }, [user, navigate]);
 

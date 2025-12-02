@@ -55,7 +55,7 @@ function AuthPage() {
   // React to auth state changes
   useEffect(() => {
     if (isSuccess || user) {
-      navigate("/");
+      navigate("/ecommerce");
       return;
     }
     if (isError) {
