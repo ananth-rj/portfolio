@@ -50,8 +50,21 @@ function ProductPage() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <Spinner />
+      <div className="flex flex-col justify-center items-center min-h-[60vh] px-4">
+        <div className="text-center max-w-2xl">
+          <div className="mb-6">
+            <Spinner />
+          </div>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+            Loading Products...
+          </h2>
+          <p className="text-lg text-gray-600 mb-2">
+            Data is coming from a real backend on a free plan
+          </p>
+          <p className="text-base text-gray-500">
+            Please wait, it may take some time to load
+          </p>
+        </div>
       </div>
     );
   }

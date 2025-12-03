@@ -49,7 +49,32 @@ function ProductDetailPage() {
     if (qty > 1) setQty(qty - 1);
   };
 
-  if (!product) return <div className="text-center py-10">Loading...</div>;
+  if (!product) {
+    return (
+      <div className="flex flex-col justify-center items-center min-h-[60vh] px-4">
+        <div className="text-center max-w-2xl">
+          <div className="mb-6">
+            <div className="flex justify-center items-center py-10">
+              <div
+                className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"
+                role="status"
+                aria-label="Loading"
+              ></div>
+            </div>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+            Loading Product Details...
+          </h2>
+          <p className="text-lg text-gray-600 mb-2">
+            Data is coming from a real backend on a free plan
+          </p>
+          <p className="text-base text-gray-500">
+            Please wait, it may take some time to load
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex item-center justify center">
