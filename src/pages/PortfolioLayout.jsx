@@ -1,10 +1,16 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
-import { useState } from "react";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FaHome, FaUser, FaFolderOpen, FaEnvelope, FaCode } from "react-icons/fa";
 
 function PortfolioLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
