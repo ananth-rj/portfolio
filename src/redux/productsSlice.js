@@ -7,9 +7,15 @@ export const fetchProducts = createAsyncThunk(
   "products/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get(`${API_URL}/api/products`);
+      const url = `${API_URL}/api/products`;
+      console.log("Fetching products from:", url);
+      const res = await axios.get(url);
+      console.log("Products response:", res.data);
       return res.data;
     } catch (error) {
+      console.error("Error fetching products:", error);
+      console.error("API_URL was:", API_URL);
+      console.error("Full error:", error.response || error.message);
       return thunkAPI.rejectWithValue(
         error.response?.data?.message ||
           error.message ||
