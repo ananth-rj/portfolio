@@ -50,20 +50,46 @@ function ProductPage() {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col justify-center items-center min-h-[60vh] px-4">
-        <div className="text-center max-w-2xl">
-          <div className="mb-6">
-            <Spinner />
+      <div className="flex flex-col justify-center items-center min-h-[60vh] px-4 py-12">
+        <div className="text-center max-w-2xl w-full">
+          <div className="bg-white rounded-2xl shadow-2xl border-2 border-gradient-to-r from-blue-500 to-purple-500 p-8 md:p-12 relative overflow-hidden">
+            {/* Decorative gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-50"></div>
+            
+            {/* Animated border gradient */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20 blur-xl"></div>
+            
+            <div className="relative z-10">
+              <div className="mb-8 flex justify-center">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-lg opacity-30 animate-pulse"></div>
+                  <div className="relative">
+                    <Spinner />
+                  </div>
+                </div>
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                Loading Products...
+              </h2>
+              
+              <div className="space-y-3 mb-6">
+                <p className="text-xl font-semibold text-gray-700">
+                  Data is coming from a real backend on a free plan
+                </p>
+                <p className="text-base text-gray-500 italic">
+                  Please wait, it may take some time to load
+                </p>
+              </div>
+              
+              {/* Animated dots */}
+              <div className="flex justify-center space-x-2 mt-8">
+                <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                <div className="w-3 h-3 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                <div className="w-3 h-3 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+              </div>
+            </div>
           </div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Loading Products...
-          </h2>
-          <p className="text-lg text-gray-600 mb-2">
-            Data is coming from a real backend on a free plan
-          </p>
-          <p className="text-base text-gray-500">
-            Please wait, it may take some time to load
-          </p>
         </div>
       </div>
     );
