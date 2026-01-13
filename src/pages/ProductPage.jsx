@@ -132,36 +132,44 @@ function ProductPage() {
 
   return (
     <div className="bg-gray-900 min-h-screen w-full">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 py-6">
-        <h3 className="text-3xl md:text-4xl font-bold mb-6 text-center text-gray-200">
-          Products Page
-        </h3>
-        <div className="flex justify-end mb-6">
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-            className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-          >
-            <option value="default" className="bg-gray-800">Sort by (Default)</option>
-            <option value="asc" className="bg-gray-800">Price: Low to High</option>
-            <option value="desc" className="bg-gray-800">Price: High to Low</option>
-          </select>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 py-8">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-2">
+              Our Products
+            </h1>
+            <p className="text-gray-400 text-sm md:text-base">
+              Discover amazing products at unbeatable prices
+            </p>
+          </div>
+          <div className="mt-4 md:mt-0">
+            <select
+              value={sortOrder}
+              onChange={(e) => setSortOrder(e.target.value)}
+              className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2.5 text-gray-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent cursor-pointer"
+            >
+              <option value="default" className="bg-gray-800">Sort by (Default)</option>
+              <option value="asc" className="bg-gray-800">Price: Low to High</option>
+              <option value="desc" className="bg-gray-800">Price: High to Low</option>
+            </select>
+          </div>
         </div>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+        {/* Products Grid */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
           {sortedProducts.map((product) => (
             <li
               key={product._id}
-              className="bg-gray-800 border border-gray-700 rounded-lg shadow-lg hover:shadow-xl hover:border-orange-500/50 transition-all p-4 flex flex-col h-full"
+              className="group bg-gray-800 border border-gray-700/50 rounded-xl shadow-lg hover:shadow-2xl hover:border-orange-500/30 transition-all duration-300 overflow-hidden flex flex-col h-full hover:-translate-y-1"
             >
-              <p className="text-lg font-semibold mb-3 text-center text-gray-200 min-h-[3rem] flex items-center justify-center">
-                {product.name}
-              </p>
-              <div className="flex-1 flex items-center justify-center mb-4 min-h-[200px] bg-gray-900 rounded-md p-2 relative">
+              {/* Product Image */}
+              <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 p-6 min-h-[240px] flex items-center justify-center overflow-hidden">
                 {product.image ? (
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="max-w-full max-h-[200px] object-contain rounded-md"
+                    className="max-w-full max-h-[220px] object-contain transition-transform duration-300 group-hover:scale-110"
                     onError={(e) => {
                       e.target.style.display = 'none';
                       const placeholder = e.target.parentElement.querySelector('.image-placeholder');
@@ -170,25 +178,45 @@ function ProductPage() {
                   />
                 ) : null}
                 <div className="hidden image-placeholder items-center justify-center text-gray-500 text-sm">
-                  No Image Available
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gray-700 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                      <span className="text-2xl">📦</span>
+                    </div>
+                    <p className="text-xs">No Image</p>
+                  </div>
                 </div>
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
-              <p className="text-xl font-bold mb-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
-                ₹{product.price}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-2 mt-auto">
-                <button
-                  onClick={() => handleViewDetails(product._id)}
-                  className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition flex-1 text-sm font-semibold"
-                >
-                  View Details
-                </button>
-                <button
-                  onClick={() => handleAddToCartClick(product._id)}
-                  className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition flex-1 text-sm font-semibold shadow-lg shadow-orange-500/50"
-                >
-                  Add to Cart
-                </button>
+
+              {/* Product Info */}
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className="text-lg font-bold text-white mb-3 line-clamp-2 min-h-[3.5rem]">
+                  {product.name}
+                </h3>
+                
+                {/* Price */}
+                <div className="mb-4">
+                  <p className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
+                    ₹{typeof product.price === 'number' ? product.price.toLocaleString('en-IN') : product.price}
+                  </p>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex flex-col gap-2.5 mt-auto">
+                  <button
+                    onClick={() => handleViewDetails(product._id)}
+                    className="w-full bg-gray-700/50 hover:bg-gray-700 text-white px-4 py-2.5 rounded-lg transition-all duration-200 text-sm font-semibold border border-gray-600 hover:border-gray-500"
+                  >
+                    View Details
+                  </button>
+                  <button
+                    onClick={() => handleAddToCartClick(product._id)}
+                    className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-4 py-2.5 rounded-lg transition-all duration-200 text-sm font-bold shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transform hover:scale-[1.02]"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
             </li>
           ))}

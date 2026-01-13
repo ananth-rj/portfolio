@@ -105,7 +105,7 @@ function RootLayout() {
                 <>
                   <li>
                     <NavLink
-                      to="/ecommerce/auth"
+                      to="/ecommerce/login"
                       className={({ isActive }) =>
                         isActive
                           ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 flex items-center gap-1"
