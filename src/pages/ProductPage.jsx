@@ -131,8 +131,8 @@ function ProductPage() {
   }
 
   return (
-    <div className="bg-gray-900 min-h-screen">
-      <div className="container mx-auto px-4 py-6">
+    <div className="bg-gray-900 min-h-screen w-full">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 py-6">
         <h3 className="text-3xl md:text-4xl font-bold mb-6 text-center text-gray-200">
           Products Page
         </h3>

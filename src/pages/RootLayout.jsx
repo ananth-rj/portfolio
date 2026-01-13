@@ -251,7 +251,7 @@ function RootLayout() {
         )}
       </header>
 
-      <main className="container mx-auto flex-grow px-4 py-6">
+      <main className="flex-grow">
         <Outlet />
       </main>
 

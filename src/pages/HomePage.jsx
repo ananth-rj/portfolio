@@ -68,13 +68,13 @@ function HomePage() {
           style={{ animationDelay: "1s" }}
         ></div>
 
-        <div className="relative container mx-auto px-4 py-24 md:py-32">
-          <div className="max-w-5xl mx-auto">
-            <div className="inline-block mb-6 px-4 py-2 bg-orange-500/20 border border-orange-500/50 rounded-full text-orange-400 text-sm font-semibold">
+        <div className="relative w-full py-12 md:py-16">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+            <div className="inline-block mb-4 px-4 py-2 bg-orange-500/20 border border-orange-500/50 rounded-full text-orange-400 text-sm font-semibold">
               <FaFire className="inline mr-2" /> New Arrivals Every Week
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black mb-6 text-white leading-tight">
+            <h1 className="text-5xl md:text-7xl font-black mb-4 text-white leading-tight">
               {user ? (
                 <>
                   Hey{" "}
@@ -103,13 +103,13 @@ function HomePage() {
               )}
             </h1>
 
-            <p className="text-xl md:text-2xl mb-10 text-gray-300 leading-relaxed max-w-3xl">
+            <p className="text-lg md:text-xl mb-6 text-gray-300 leading-relaxed max-w-3xl">
               {user
                 ? "Your favorite products are waiting. Browse our latest collection and grab the best deals!"
                 : "Discover thousands of products at unbeatable prices. Join millions of happy shoppers today."}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link
                 to="/ecommerce/products"
                 className="group relative px-10 py-5 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg rounded-lg overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-2xl shadow-orange-500/50"
@@ -131,7 +131,7 @@ function HomePage() {
             </div>
 
             {/* Benefits Bar */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
@@ -149,8 +149,8 @@ function HomePage() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 bg-gray-800">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-gray-800 w-full">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Shop by Category
@@ -186,91 +186,87 @@ function HomePage() {
       </section>
 
       {/* Why Choose Us - Dark Cards */}
-      <section className="py-20 bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-                Why Choose Us?
-              </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                We're not just another store. We're your shopping partner.
+      <section className="py-20 bg-gray-900 w-full">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+              Why Choose Us?
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              We're not just another store. We're your shopping partner.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gray-800 border border-gray-700 rounded-xl p-8 hover:border-orange-500/50 transition-all duration-300 hover:transform hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                <FaTag className="text-2xl text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Best Prices
+              </h3>
+              <p className="text-gray-400 leading-relaxed">
+                We guarantee the best prices on all products. If you find it
+                cheaper elsewhere, we'll match it.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-gray-800 border border-gray-700 rounded-xl p-8 hover:border-orange-500/50 transition-all duration-300 hover:transform hover:scale-105">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-6">
-                  <FaTag className="text-2xl text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Best Prices
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  We guarantee the best prices on all products. If you find it
-                  cheaper elsewhere, we'll match it.
-                </p>
+            <div className="bg-gray-800 border border-gray-700 rounded-xl p-8 hover:border-orange-500/50 transition-all duration-300 hover:transform hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                <FaTruck className="text-2xl text-white" />
               </div>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Lightning Fast
+              </h3>
+              <p className="text-gray-400 leading-relaxed">
+                Same-day shipping available. Get your orders delivered faster
+                than ever before.
+              </p>
+            </div>
 
-              <div className="bg-gray-800 border border-gray-700 rounded-xl p-8 hover:border-orange-500/50 transition-all duration-300 hover:transform hover:scale-105">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-6">
-                  <FaTruck className="text-2xl text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Lightning Fast
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Same-day shipping available. Get your orders delivered faster
-                  than ever before.
-                </p>
+            <div className="bg-gray-800 border border-gray-700 rounded-xl p-8 hover:border-orange-500/50 transition-all duration-300 hover:transform hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-6">
+                <FaShoppingBag className="text-2xl text-white" />
               </div>
-
-              <div className="bg-gray-800 border border-gray-700 rounded-xl p-8 hover:border-orange-500/50 transition-all duration-300 hover:transform hover:scale-105">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-6">
-                  <FaShoppingBag className="text-2xl text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Huge Selection
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Browse through thousands of products across multiple
-                  categories. Something for everyone.
-                </p>
-              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Huge Selection
+              </h3>
+              <p className="text-gray-400 leading-relaxed">
+                Browse through thousands of products across multiple categories.
+                Something for everyone.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section - Dark with Orange accent */}
-      <section className="py-20 bg-gradient-to-r from-gray-800 to-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-gray-800 border-2 border-orange-500/50 rounded-3xl p-12 md:p-16 shadow-2xl">
-              <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
-                Ready to Shop?
-              </h2>
-              <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-                Join thousands of satisfied customers. Start your shopping
-                journey today and experience the difference.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <section className="py-20 bg-gradient-to-r from-gray-800 to-gray-900 w-full">
+        <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 text-center">
+          <div className="bg-gray-800 border-2 border-orange-500/50 rounded-3xl p-12 md:p-16 shadow-2xl">
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
+              Ready to Shop?
+            </h2>
+            <p className="text-xl text-gray-300 mb-10 leading-relaxed">
+              Join thousands of satisfied customers. Start your shopping journey
+              today and experience the difference.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/ecommerce/products"
+                className="group px-10 py-5 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg rounded-lg transform hover:scale-105 transition-all duration-300 shadow-xl shadow-orange-500/50 flex items-center justify-center gap-2"
+              >
+                <span>Browse Products</span>
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              {!user && (
                 <Link
-                  to="/ecommerce/products"
-                  className="group px-10 py-5 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg rounded-lg transform hover:scale-105 transition-all duration-300 shadow-xl shadow-orange-500/50 flex items-center justify-center gap-2"
+                  to="/ecommerce/auth"
+                  className="px-10 py-5 bg-gray-700 border-2 border-gray-600 text-white font-bold text-lg rounded-lg hover:bg-gray-600 transition-all duration-300"
                 >
-                  <span>Browse Products</span>
-                  <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  Sign Up Now
                 </Link>
-                {!user && (
-                  <Link
-                    to="/ecommerce/auth"
-                    className="px-10 py-5 bg-gray-700 border-2 border-gray-600 text-white font-bold text-lg rounded-lg hover:bg-gray-600 transition-all duration-300"
-                  >
-                    Sign Up Now
-                  </Link>
-                )}
-              </div>
+              )}
             </div>
           </div>
         </div>
