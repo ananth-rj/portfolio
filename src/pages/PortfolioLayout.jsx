@@ -7,6 +7,9 @@ function PortfolioLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
+  // Check if we're on an ecommerce page
+  const isEcommercePage = location.pathname.startsWith("/ecommerce");
+
   // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -14,7 +17,8 @@ function PortfolioLayout() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+      {!isEcommercePage && (
+        <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
             <FaCode className="text-2xl" />
@@ -169,12 +173,14 @@ function PortfolioLayout() {
           ></div>
         )}
       </header>
+      )}
 
       <main className="flex-grow">
         <Outlet />
       </main>
 
-      <footer className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-6 mt-auto">
+      {!isEcommercePage && (
+        <footer className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-6 mt-auto">
         <div className="container mx-auto px-4">
           <p className="mb-2">&copy; {new Date().getFullYear()} Anantharaj V. All rights reserved.</p>
           <div className="flex justify-center gap-4 text-sm">
@@ -192,6 +198,7 @@ function PortfolioLayout() {
           </div>
         </div>
       </footer>
+      )}
     </div>
   );
 }

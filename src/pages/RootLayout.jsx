@@ -8,6 +8,7 @@ import {
   FaShoppingCart,
   FaSignInAlt,
   FaUserPlus,
+  FaArrowLeft,
 } from "react-icons/fa";
 
 import Logout from "./Logout";
@@ -33,8 +34,8 @@ function RootLayout() {
   }, [cartItems]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <header className="bg-blue-700 text-white shadow-md relative">
+    <div className="min-h-screen flex flex-col bg-gray-900">
+      <header className="bg-gray-900 border-b border-gray-800 text-white shadow-md relative">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           <Link to="/ecommerce" onClick={() => setMobileOpen(false)}>
             <Logo />
@@ -42,7 +43,7 @@ function RootLayout() {
 
           {/* Hamburger icon on mobile */}
           <button
-            className="text-3xl md:hidden"
+            className="text-3xl md:hidden text-white hover:text-orange-500 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle Menu"
           >
@@ -51,15 +52,15 @@ function RootLayout() {
 
           {/* Desktop navigation */}
           <nav className="hidden md:block">
-            <ul className="flex space-x-6 text-lg">
+            <ul className="flex space-x-6 text-lg items-center">
               <li>
                 <NavLink
                   to="/ecommerce"
                   end
                   className={({ isActive }) =>
                     isActive
-                      ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
-                      : "hover:text-yellow-300 transition flex items-center gap-1"
+                      ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 flex items-center gap-1"
+                      : "hover:text-orange-500 transition flex items-center gap-1 text-gray-300"
                   }
                 >
                   <FaHome /> Home
@@ -70,8 +71,8 @@ function RootLayout() {
                   to="/ecommerce/products"
                   className={({ isActive }) =>
                     isActive
-                      ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
-                      : "hover:text-yellow-300 transition flex items-center gap-1"
+                      ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 flex items-center gap-1"
+                      : "hover:text-orange-500 transition flex items-center gap-1 text-gray-300"
                   }
                 >
                   <FaBoxOpen /> Products
@@ -85,13 +86,13 @@ function RootLayout() {
                       to="/ecommerce/cart"
                       className={({ isActive }) =>
                         isActive
-                          ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
-                          : "hover:text-yellow-300 transition flex items-center gap-1"
+                          ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 flex items-center gap-1"
+                          : "hover:text-orange-500 transition flex items-center gap-1 text-gray-300"
                       }
                     >
                       <FaShoppingCart />
                       Cart
-                      <span className="bg-yellow-300 text-blue-700 rounded-full px-2 ml-1 text-sm font-bold">
+                      <span className="bg-orange-500 text-white rounded-full px-2 ml-1 text-sm font-bold">
                         {cartItems.length}
                       </span>
                     </NavLink>
@@ -103,19 +104,27 @@ function RootLayout() {
               ) : (
                 <>
                   <li>
-                  <NavLink
-                    to="/ecommerce/auth"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 flex items-center gap-1"
-                        : "hover:text-yellow-300 transition flex items-center gap-1"
-                    }
-                  >
-                    <FaSignInAlt /> Login
-                  </NavLink>
+                    <NavLink
+                      to="/ecommerce/auth"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 flex items-center gap-1"
+                          : "hover:text-orange-500 transition flex items-center gap-1 text-gray-300"
+                      }
+                    >
+                      <FaSignInAlt /> Login
+                    </NavLink>
                   </li>
                 </>
               )}
+              <li className="ml-4 pl-4 border-l border-gray-700">
+                <Link
+                  to="/"
+                  className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all shadow-lg shadow-orange-500/50"
+                >
+                  <FaArrowLeft /> Back to Portfolio
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -123,7 +132,7 @@ function RootLayout() {
         {/* Mobile Nav Drawer */}
         <nav
           className={`
-    fixed left-0 bottom-0 w-full bg-blue-700 text-white transform
+    fixed left-0 bottom-0 w-full bg-gray-900 border-t border-gray-800 text-white transform
     ${mobileOpen ? "translate-y-0" : "translate-y-full"}
     transition-transform duration-300 ease-in-out md:hidden z-50 rounded-t-lg
     shadow-lg
@@ -138,8 +147,8 @@ function RootLayout() {
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
                   (isActive
-                    ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
-                    : "hover:text-yellow-300 transition ") +
+                    ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 "
+                    : "hover:text-orange-500 transition text-gray-300 ") +
                   "flex items-center gap-2"
                 }
               >
@@ -153,8 +162,8 @@ function RootLayout() {
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
                   (isActive
-                    ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
-                    : "hover:text-yellow-300 transition ") +
+                    ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 "
+                    : "hover:text-orange-500 transition text-gray-300 ") +
                   "flex items-center gap-2"
                 }
               >
@@ -171,14 +180,14 @@ function RootLayout() {
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
                       (isActive
-                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
-                        : "hover:text-yellow-300 transition ") +
+                        ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 "
+                        : "hover:text-orange-500 transition text-gray-300 ") +
                       "flex items-center gap-2"
                     }
                   >
                     <FaShoppingCart />
                     Cart{" "}
-                    <span className="bg-yellow-300 text-blue-700 rounded-full px-2 ml-1 text-sm font-bold">
+                    <span className="bg-orange-500 text-white rounded-full px-2 ml-1 text-sm font-bold">
                       {cartItems.length}
                     </span>
                   </NavLink>
@@ -195,8 +204,8 @@ function RootLayout() {
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
                       (isActive
-                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
-                        : "hover:text-yellow-300 transition ") +
+                        ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 "
+                        : "hover:text-orange-500 transition text-gray-300 ") +
                       "flex items-center gap-2"
                     }
                   >
@@ -210,8 +219,8 @@ function RootLayout() {
                     onClick={() => setMobileOpen(false)}
                     className={({ isActive }) =>
                       (isActive
-                        ? "text-yellow-300 font-semibold border-b-2 border-yellow-300 pb-1 "
-                        : "hover:text-yellow-300 transition ") +
+                        ? "text-orange-500 font-semibold border-b-2 border-orange-500 pb-1 "
+                        : "hover:text-orange-500 transition text-gray-300 ") +
                       "flex items-center gap-2"
                     }
                   >
@@ -221,6 +230,15 @@ function RootLayout() {
                 </li>
               </>
             )}
+            <li className="mt-4 pt-4 border-t border-gray-700">
+              <Link
+                to="/"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all shadow-lg shadow-orange-500/50"
+              >
+                <FaArrowLeft /> Back to Portfolio
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -237,7 +255,7 @@ function RootLayout() {
         <Outlet />
       </main>
 
-      <footer className="bg-blue-700 text-white text-center py-4 mt-auto">
+      <footer className="bg-gray-900 border-t border-gray-800 text-gray-400 text-center py-4 mt-auto">
         &copy; {new Date().getFullYear()} React Shop. All rights reserved.
       </footer>
     </div>

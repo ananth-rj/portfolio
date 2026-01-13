@@ -5,7 +5,10 @@ import { login } from "../redux/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({
+    email: "ananth@gmail.com",
+    password: "abc123",
+  });
   const { email, password } = formData;
   const navigate = useNavigate();
   const dispatch = useDispatch();
