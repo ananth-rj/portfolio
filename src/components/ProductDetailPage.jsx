@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../redux/cartSlice";
-import { API_URL } from "./utils";
+import { apiUrl } from "./utils";
 import { toast } from "react-toastify";
 import { FaArrowLeft, FaMinus, FaPlus, FaShoppingCart } from "react-icons/fa";
 
@@ -19,7 +19,7 @@ function ProductDetailPage() {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/products/${id}`);
+        const res = await fetch(apiUrl(`/api/products/${id}`));
         if (!res.ok) {
           navigate("/ecommerce/products");
           return;

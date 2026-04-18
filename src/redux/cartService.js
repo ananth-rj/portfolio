@@ -1,8 +1,8 @@
 import axios from "axios";
-import { API_URL } from "../components/utils";
+import { apiUrl } from "../components/utils";
 
 const getCart = async (token) => {
-  const res = await axios.get(`${API_URL}/api/cart`, {
+  const res = await axios.get(apiUrl("/api/cart"), {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -12,7 +12,7 @@ const getCart = async (token) => {
 
 const addToCart = async (productId, qty, token) => {
   const res = await axios.post(
-    `${API_URL}/api/cart`,
+    apiUrl("/api/cart"),
     { productId, qty },
     {
       headers: {
@@ -25,7 +25,7 @@ const addToCart = async (productId, qty, token) => {
 
 const updateCartItem = async (itemId, qty, token) => {
   const res = await axios.put(
-    `${API_URL}/api/cart/${itemId}`,
+    apiUrl(`/api/cart/${itemId}`),
     { qty },
     {
       headers: {
@@ -37,7 +37,7 @@ const updateCartItem = async (itemId, qty, token) => {
 };
 
 const removeFromCart = async (itemId, token) => {
-  const res = await axios.delete(`${API_URL}/api/cart/${itemId}`, {
+  const res = await axios.delete(apiUrl(`/api/cart/${itemId}`), {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -46,7 +46,7 @@ const removeFromCart = async (itemId, token) => {
 };
 
 const clearCart = async (token) => {
-  const res = await axios.delete(`${API_URL}/api/cart`, {
+  const res = await axios.delete(apiUrl("/api/cart"), {
     headers: {
       Authorization: `Bearer ${token}`,
     },

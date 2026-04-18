@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { API_URL } from "./utils";
+import { apiUrl } from "./utils";
 
 function EditProductPage() {
   const { id } = useParams();
@@ -30,7 +30,7 @@ function EditProductPage() {
         const user = tokenObj ? JSON.parse(tokenObj) : null;
         const token = user?.token || null;
 
-        const res = await fetch(`${API_URL}/api/products/${id}`, {
+        const res = await fetch(apiUrl(`/api/products/${id}`), {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -89,7 +89,7 @@ function EditProductPage() {
       const user = tokenObj ? JSON.parse(tokenObj) : null;
       const token = user?.token || null;
 
-      const res = await fetch(`${API_URL}/api/products/${id}`, {
+      const res = await fetch(apiUrl(`/api/products/${id}`), {
         method: "PUT",
         headers: {
           Authorization: token ? `Bearer ${token}` : "",

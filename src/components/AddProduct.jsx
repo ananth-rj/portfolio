@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { API_URL } from "./utils";
+import { apiUrl } from "./utils";
 
 const AddProduct = () => {
   const [name, setName] = useState("");
@@ -26,7 +26,7 @@ const AddProduct = () => {
         formData.append("image", image);
       }
 
-      const { data } = await axios.post(`${API_URL}/api/products`, formData, {
+      const { data } = await axios.post(apiUrl("/api/products"), formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           // If using JWT auth:

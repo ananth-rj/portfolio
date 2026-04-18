@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { API_URL } from "../components/utils";
+import { API_URL, apiUrl } from "../components/utils";
 
 const UpdateProduct = () => {
   const { id } = useParams();
@@ -21,7 +21,7 @@ const UpdateProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const { data } = await axios.get(`${API_URL}/api/products/${id}`);
+        const { data } = await axios.get(apiUrl(`/api/products/${id}`));
         setName(data.name);
         setPrice(data.price);
         setDescription(data.description);
@@ -63,7 +63,7 @@ const UpdateProduct = () => {
       }
 
       const { data } = await axios.put(
-        `${API_URL}/api/products/${id}`,
+        apiUrl(`/api/products/${id}`),
         formData,
         config
       );
@@ -148,7 +148,7 @@ const UpdateProduct = () => {
             />
           ) : (
             <img
-              src={`${API_URL}/api/products/${id}/image`}
+              src={API_URL ? apiUrl(`/api/products/${id}/image`) : ""}
               alt="current product"
               style={{ width: "200px", height: "auto" }}
             />
