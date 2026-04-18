@@ -1,4 +1,4 @@
-export const API_URL = import.meta.env.VITE_API_URL || "https://shopbackend-ye8f.onrender.com";
+export const API_URL = import.meta.env.VITE_API_URL;
 
 // Debug: Log API URL in development
 if (import.meta.env.DEV) {
