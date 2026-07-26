@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { FaExternalLinkAlt, FaGithub, FaShoppingCart, FaCode, FaRocket, FaDatabase, FaPalette } from "react-icons/fa";
+import { FaGithub, FaShoppingCart, FaCode, FaRocket, FaDatabase, FaPalette } from "react-icons/fa";
 
 function PortfolioProjects() {
   return (
@@ -53,19 +52,13 @@ function PortfolioProjects() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Link 
-                  to="/ecommerce"
-                  className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center gap-2"
-                >
-                  <FaExternalLinkAlt /> View Live Project
-                </Link>
                 <a 
                   href="https://github.com/ananth-rj" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="bg-white/20 backdrop-blur-sm text-white border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition flex items-center gap-2"
+                  className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center gap-2"
                 >
-                  <FaGithub /> GitHub
+                  <FaGithub /> View on GitHub
                 </a>
               </div>
             </div>
@@ -78,12 +71,14 @@ function PortfolioProjects() {
                     Experience the full e-commerce application with product browsing, cart management, and user authentication.
                   </p>
                 </div>
-                <Link 
-                  to="/ecommerce"
+                <a 
+                  href="https://github.com/ananth-rj" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition shadow-lg"
                 >
-                  Explore E-commerce App →
-                </Link>
+                  View Project on GitHub →
+                </a>
               </div>
             </div>
           </div>
