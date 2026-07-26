@@ -97,7 +97,7 @@ function PortfolioContact() {
             Get In <span className="text-gradient">Touch</span>
           </h1>
           <p className="text-slate-400 text-base sm:text-lg">
-            Send a message directly to my inbox at <strong className="text-indigo-400">ananthofficemail@gmail.com</strong> powered by Web3Forms.
+            Send a message directly to my inbox at <strong className="text-indigo-400">ananthofficemail@gmail.com</strong> or fill out the form below.
           </p>
         </div>
 
@@ -342,8 +342,8 @@ function PortfolioContact() {
             </div>
 
             <div className="p-4 rounded-2xl bg-indigo-950/40 border border-indigo-800/50 text-indigo-300 text-xs">
-              <p className="font-semibold text-white mb-1">⚡ Web3Forms Integration</p>
-              <p className="text-slate-400">Direct HTTP delivery without backend code or server costs.</p>
+              <p className="font-semibold text-white mb-1">⚡ Direct Email Delivery</p>
+              <p className="text-slate-400">Messages sent here land directly in my email inbox instantly.</p>
             </div>
           </div>
         </div>
