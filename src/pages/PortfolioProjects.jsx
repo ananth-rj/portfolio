@@ -1,4 +1,4 @@
-import { FaGithub, FaShoppingCart, FaCode, FaRocket, FaDatabase, FaPalette } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaShoppingCart, FaCode, FaRocket, FaDatabase, FaPalette } from "react-icons/fa";
 
 function PortfolioProjects() {
   return (
@@ -53,12 +53,20 @@ function PortfolioProjects() {
 
               <div className="flex flex-wrap gap-4">
                 <a 
-                  href="https://github.com/ananth-rj" 
+                  href="https://shop-ananth.netlify.app/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center gap-2"
                 >
-                  <FaGithub /> View on GitHub
+                  <FaExternalLinkAlt /> View Live Project
+                </a>
+                <a 
+                  href="https://github.com/ananth-rj" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white/20 backdrop-blur-sm text-white border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition flex items-center gap-2"
+                >
+                  <FaGithub /> GitHub
                 </a>
               </div>
             </div>
@@ -72,12 +80,12 @@ function PortfolioProjects() {
                   </p>
                 </div>
                 <a 
-                  href="https://github.com/ananth-rj" 
+                  href="https://shop-ananth.netlify.app/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition shadow-lg"
                 >
-                  View Project on GitHub →
+                  Explore E-commerce App →
                 </a>
               </div>
             </div>

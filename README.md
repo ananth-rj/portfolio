@@ -21,6 +21,8 @@ A professional portfolio website showcasing my skills, experience, and projects.
 
 **Portfolio**: [https://anantharaj-portfolio.netlify.app/](https://anantharaj-portfolio.netlify.app/)
 
+**E-commerce**: [https://shop-ananth.netlify.app/](https://shop-ananth.netlify.app/)
+
 ## Getting Started Locally
 
 1. Clone the repository:
