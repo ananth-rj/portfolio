@@ -7,8 +7,8 @@ import {
   FaMapMarkerAlt,
   FaCode,
   FaLaptopCode,
-  FaDatabase,
-  FaWrench,
+  FaMobileAlt,
+  FaClock,
 } from "react-icons/fa";
 
 function PortfolioHome() {
@@ -20,13 +20,18 @@ function PortfolioHome() {
           <h1 className="text-4xl md:text-7xl font-bold text-gray-900 mb-4">
             ANANTHARAJ V
           </h1>
-          <h2 className="text-3xl md:text-4xl text-blue-600 font-semibold mb-6">
-            React Developer
+          <h2 className="text-3xl md:text-4xl text-blue-600 font-semibold mb-4">
+            Frontend Developer
           </h2>
+          <p className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-semibold mb-6">
+            <FaClock /> Notice Period: 15 Days
+          </p>
           <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-            Building scalable applications with React.js, Redux Toolkit, and
-            modern web technologies. Passionate about creating efficient,
-            user-friendly interfaces.
+            Frontend Developer with nearly 2 years of experience building
+            responsive web and mobile applications using React.js, React Native,
+            Angular, TypeScript, and JavaScript. Skilled in API integration,
+            state management, reusable component development, and performance
+            optimization.
           </p>
 
           {/* Contact Info */}
@@ -44,8 +49,7 @@ function PortfolioHome() {
               <FaEnvelope /> <span>ananthofficemail@gmail.com</span>
             </a>
             <div className="flex items-center gap-2">
-              <FaMapMarkerAlt />{" "}
-              <span>Chennai / Bengaluru (Open to relocation), India</span>
+              <FaMapMarkerAlt /> <span>Chennai, India</span>
             </div>
           </div>
 
@@ -94,22 +98,22 @@ function PortfolioHome() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="bg-white p-6 rounded-xl shadow-lg text-center">
             <FaCode className="text-4xl text-blue-600 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">1+ Year</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">~2 Years</h3>
             <p className="text-gray-600">Professional Experience</p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-lg text-center">
             <FaLaptopCode className="text-4xl text-blue-600 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-800 mb-2">
-              React Expert
+              Web &amp; Mobile
             </h3>
-            <p className="text-gray-600">Modern Frontend Development</p>
+            <p className="text-gray-600">React.js · React Native · Angular</p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-lg text-center">
-            <FaDatabase className="text-4xl text-blue-600 mx-auto mb-4" />
+            <FaMobileAlt className="text-4xl text-blue-600 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-800 mb-2">
-              Full Stack
+              Play Store App
             </h3>
-            <p className="text-gray-600">React + Node.js + MongoDB</p>
+            <p className="text-gray-600">Published React Native App</p>
           </div>
         </div>
       </section>
@@ -123,8 +127,13 @@ function PortfolioHome() {
           <div className="flex flex-wrap justify-center gap-3">
             {[
               "React.js",
+              "React Native",
+              "Angular",
+              "Next.js",
               "TypeScript",
+              "JavaScript",
               "Redux Toolkit",
+              "TanStack Query",
               "Tailwind CSS",
               "Node.js",
               "Express.js",

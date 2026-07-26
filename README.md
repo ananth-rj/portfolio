@@ -6,7 +6,7 @@ A professional portfolio website showcasing my skills, experience, and projects.
 
 - **Home Page**: Professional introduction with quick stats and tech stack overview
 - **About Page**: Detailed work experience, skills, education, and certifications
-- **Projects Page**: Showcase of projects including the React E-commerce App
+- **Projects Page**: Showcase of projects including the React E-commerce App and React Native Play Store app
 - **Contact Page**: Contact information and social links
 
 ## Technologies Used
@@ -22,6 +22,8 @@ A professional portfolio website showcasing my skills, experience, and projects.
 **Portfolio**: [https://anantharaj-portfolio.netlify.app/](https://anantharaj-portfolio.netlify.app/)
 
 **E-commerce**: [https://shop-ananth.netlify.app/](https://shop-ananth.netlify.app/)
+
+**React Native App (Google Play)**: [சுப நாள் – திருமண பொருத்தம்](https://play.google.com/store/apps/details?id=com.ananth.subanaal)
 
 ## Getting Started Locally
 
